@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bat ball game</title>
+    <style>
+        /* General Styles */
+body {
+    background-color: #c5b3b3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+}
+
+/* Game Container */
+.game-container {
+    position: relative;
+    width: 600px;
+    height: 400px;
+    background-color: green;
+    border: 5px solid #fff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Bat */
+.bat {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    width: 80px;
+    height: 15px;
+    background-color: brown;
+    border-radius: 5px;
+    transform: translateX(-50%);
+}
+
+/* Ball */
+.ball {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Stump */
+.stump {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 10px;
+    height: 50px;
+    background-color: white;
+    transform: translateX(-50%);
+}
+
+/* Buttons */
+.button-container {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.bat-button {
+    background-color: brown;
+    color: white;
+}
+
+.ball-button {
+    background-color: red;
+    color: white;
+}
+
+.stump-button {
+    background-color: white;
+    color: black;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+     h1 {
+    font-family: 'Playfair Display', serif;
+    color: white; 
+    font-size: 36px;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+
+ }
+ .game-container {
+    position: relative;
+    width: 600px;
+    height: 400px;
+    background: url(/images/360_F_369503958_LZg280QKEi1ygukvq6nKhg8MqpZ7d3dp.jpg) no-repeat center center/cover;
+    border: 5px solid #fff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+ </style>
+</head>
+<body>
+    <div class="game-container">
+    <h1>Bat Ball Game</h1>
+     <center>
+    <button>bat</button>
+    <button>ball</button>
+    <button>stump</button>
+    </center>
+    </div>
+    
+   
+   <script>
+        document.querySelectorAll("button").forEach((button) => {
+        button.addEventListener("click", function () {
+            let userChoice = this.textContent.toLowerCase(); // Get user choice
+            let newrandomNumber = Math.floor(Math.random() * 3); // Generates 0, 1, or 2
+            let compChoice;
+
+            if (newrandomNumber === 0) {
+                compChoice = "bat";
+            } else if (newrandomNumber === 1) {
+                compChoice = "ball";
+            } else {
+                compChoice = "stump";
+            }
+
+            console.log("Computer choice is", compChoice);
+
+            let resultmsg;
+
+            if (
+                (userChoice === "bat" && compChoice === "stump") ||
+                (userChoice === "ball" && compChoice === "bat") ||
+                (userChoice === "stump" && compChoice === "ball")
+            ) {
+                resultmsg = "You won!";
+            } else if (userChoice === compChoice) {
+                resultmsg = "It's a draw!";
+            } else {
+                resultmsg = "Computer won!";
+            }
+
+            alert(`You chose ${userChoice}. Computer chose ${compChoice}. ${resultmsg}`);
+        });
+    });
+</script>
+
+
+</body>
+</html>
